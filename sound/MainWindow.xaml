@@ -1,0 +1,54 @@
+﻿<Window x:Class="sound.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sound"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="520" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal"  VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Content="Открыть" Margin="0,0,0,0" Click="Open" />
+        </StackPanel>
+        <Grid  VerticalAlignment="Center" HorizontalAlignment="Center" Height="220">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ListBox Name="track_list" Margin="-270,6,-304,4" d:ItemsSource="{d:SampleData ItemCount=12}" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+                <ListBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.828"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-1.186"/>
+                    </TransformGroup>
+                </ListBox.RenderTransform>
+            </ListBox>
+
+        </Grid>
+
+        <Grid>
+            <StackPanel VerticalAlignment="Center" Margin="0,200,0,0">
+                <Slider Name="track_mesto" Orientation="Horizontal" Grid.Column="1" Margin="10,66,0,0" ValueChanged="track_mesto_ValueChanged" RenderTransformOrigin="0.5,0.666" />
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock x:Name="current_time" Text="00:00"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock x:Name="music_duration"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0,-3,0,3">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <RibbonButton Label="Back"  Click="Back"/>
+                <RibbonButton Label="Play"  Click="Play"/>
+                <RibbonButton Label="Pause"  Click="Pause"/>
+                <RibbonButton x:Name="replay_button" Label=""  Click="Repeat"/>
+                <RibbonButton Label="Next"  Click="Next"/>
+                <RibbonButton Label="Shuffle"  Click="ShuffleButton_Click"/>
+            </StackPanel>
+            <TextBlock Text=": " Margin="419,384,375,104"/>
+        </Grid>
+    </Grid>
+</Window>
